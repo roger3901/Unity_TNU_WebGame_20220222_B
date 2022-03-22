@@ -87,6 +87,16 @@ namespace KID
             // 欄位名稱.靜態屬性名稱 指定 值
             // 剛體.加速度 = 新 二維向量(水平，垂直) * 速度
             rig.velocity = new Vector2(h, v) * speed;
+            // 動畫控制器.設定布林值(參數名稱，布林值)
+            // 水平 不等於 零 或者 垂直 不等於 零
+            ani.SetBool(parameterRun, h != 0 || v != 0);
+
+            // 三元運算子語法
+            // 官方文件：https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/operators/conditional-operator
+            // 布林值 ? 布林值 等於 true : 布林值 等於 false
+            // 水平 >= 0 角度 0 否則 角度 180
+            // 變形元件.歐拉角 = 新 三維向量(X，Y，Z)
+            transform.eulerAngles = new Vector3(0, h >= 0 ? 0 : 180, 0);
         }
         #endregion
     }
